@@ -1,0 +1,16 @@
+import { siteConfig } from '@/config/site-config';
+import Link from 'next/link';
+
+export function Navigation() {
+  return (
+    <div className="bg-background sticky top-0 z-50">
+      <header className="flex h-12  w-full items-center border-b px-6">
+        <nav className="flex items-center text-sm font-medium">
+          <Link href="/" className="font-sans text-xl font-semibold">
+            {siteConfig.title}
+          </Link>
+        </nav>
+      </header>
+    </div>
+  );
+}
