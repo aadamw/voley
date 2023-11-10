@@ -4,7 +4,7 @@ export function H1({ className, ...props }: React.HTMLAttributes<HTMLHeadingElem
   return (
     <h1
       {...props}
-      className={cn('text-sans text-xl font-semibold leading-tight md:text-3xl', className)}
+      className={cn('text-sans text-2xl font-semibold leading-tight md:text-4xl', className)}
     />
   );
 }
