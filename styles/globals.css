@@ -71,6 +71,25 @@
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground transition-colors;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .footerGrid {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 3fr) max-content;
+    grid-template-areas: 'left center right';
+  }
+
+  .footerLeft {
+    grid-area: left;
+  }
+
+  .footerCenter {
+    grid-area: center;
+  }
+
+  .footerRight {
+    grid-area: right;
   }
 }

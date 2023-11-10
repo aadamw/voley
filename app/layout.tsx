@@ -3,6 +3,7 @@ import { GeistSans, GeistMono } from 'geist/font';
 import '@/styles/globals.css';
 import { cn } from '@/lib/utils';
 import { siteConfig } from '@/config/site-config';
+import { Providers } from '../components/providers';
 
 export const metadata = {
   title: siteConfig.title,
@@ -16,10 +17,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         className={cn(
           GeistMono.variable,
           GeistSans.variable,
-          'text-foreground bg-background font-mono',
+          'text-foreground bg-background flex min-h-screen flex-col font-mono antialiased',
         )}
       >
-        {children}
+        <Providers>{children}</Providers>
       </body>
     </html>
   );
