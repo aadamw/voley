@@ -16,7 +16,7 @@ export const Post = defineDocumentType(() => ({
     title: { type: 'string', required: true, description: 'Title of the post' },
     date: { type: 'date', required: true, description: 'Date when post is published' },
     description: { type: 'mdx', required: true, description: 'Display post summary on' },
-    coverImgUrl: { type: 'string', required: true, description: 'Cover image of the post' },
+    coverImgUrl: { type: 'string', description: 'Cover image of the post' },
     authors: {
       type: 'list',
       of: Author,
