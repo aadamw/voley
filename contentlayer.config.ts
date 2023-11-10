@@ -1,7 +1,7 @@
 import { defineDocumentType, defineNestedType, makeSource } from 'contentlayer/source-files';
 
 const Author = defineNestedType(() => ({
-  name: 'author',
+  name: 'Author',
   fields: {
     name: { type: 'string', required: true, description: 'Name of the author' },
     avatarUrl: { type: 'string', required: true, description: 'Avatar image of the author' },
