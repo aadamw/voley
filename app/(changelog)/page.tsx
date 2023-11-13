@@ -2,11 +2,11 @@ import { Post } from '@/.contentlayer/generated';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { H1, H2 } from '@/components/ui/typography';
 import { getAllPosts } from '@/lib/posts';
-import { useMDXComponent } from 'next-contentlayer/hooks';
 import { compareDesc } from 'date-fns';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Time } from '@/components/time';
+import { Mdx } from '@/components/mdx';
 
 export default function Home() {
   const posts = getAllPosts();
@@ -27,8 +27,6 @@ export default function Home() {
 }
 
 function Post({ post }: { post: Post }) {
-  const MDXContent = useMDXComponent(post.description.code);
-
   return (
     <article className="grid gap-4 border-b py-4">
       <div className="flex items-center gap-4">
@@ -59,7 +57,7 @@ function Post({ post }: { post: Post }) {
         <Link href={post.url}>{post.title}</Link>
       </H2>
       <section>
-        <MDXContent />
+        <Mdx code={post.description.code} />
       </section>
     </article>
   );
