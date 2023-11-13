@@ -75,6 +75,22 @@
   }
 }
 
+[data-theme='light'] {
+  display: block;
+}
+
+[data-theme='dark'] {
+  display: none;
+}
+
+.dark [data-theme='light'] {
+  display: none;
+}
+
+.dark [data-theme='dark'] {
+  display: block;
+}
+
 @media screen and (min-width: 768px) {
   .footerGrid {
     grid-template-columns: minmax(0, 1fr) minmax(0, 3fr) max-content;
@@ -92,4 +108,130 @@
   .footerRight {
     grid-area: right;
   }
+}
+
+.prose .anchor {
+  @apply invisible absolute no-underline;
+
+  margin-left: -1em;
+  padding-right: 0.5em;
+  width: 80%;
+  max-width: 700px;
+  cursor: pointer;
+}
+
+.anchor:hover {
+  @apply visible;
+}
+
+.prose a {
+  @apply decoration-neutral-600 decoration-[0.1em] underline-offset-2 transition-all;
+}
+
+.prose .anchor:after {
+  @apply text-neutral-700;
+  content: '#';
+}
+
+.prose *:hover > .anchor {
+  @apply visible;
+}
+
+.prose pre {
+  @apply border border-neutral-800 bg-neutral-900;
+}
+
+.prose code {
+  @apply rounded-lg border border-neutral-800 bg-neutral-900 px-1 py-0.5 text-neutral-200;
+}
+
+.prose pre code {
+  @apply p-0 text-neutral-200;
+  border: initial;
+}
+
+.prose img {
+  /* Don't apply styles to next/image */
+  @apply m-0;
+}
+
+.prose > :first-child {
+  /* Override removing top margin, causing layout shift */
+  margin-top: 1.25em !important;
+  margin-bottom: 1.25em !important;
+}
+
+/* Remove Safari input shadow on mobile */
+input[type='text'],
+input[type='email'] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+table {
+  display: block;
+  max-width: fit-content;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+.prose .callout > p {
+  margin: 0 !important;
+}
+
+[data-rehype-pretty-code-fragment] {
+  @apply relative;
+}
+
+[data-rehype-pretty-code-fragment] code {
+  @apply grid min-w-full break-words rounded-none border-0 bg-transparent p-0;
+  counter-reset: line;
+  box-decoration-break: clone;
+}
+
+[data-rehype-pretty-code-fragment] .line {
+  @apply inline-block min-h-[1rem] w-full px-4 py-0.5;
+}
+
+[data-rehype-pretty-code-fragment] [data-line-numbers] .line {
+  @apply px-2;
+}
+
+[data-rehype-pretty-code-fragment] [data-line-numbers] > .line::before {
+  @apply text-xs text-zinc-50/40;
+  counter-increment: line;
+  content: counter(line);
+  display: inline-block;
+  width: 1.8rem;
+  margin-right: 1.4rem;
+  text-align: right;
+}
+
+[data-rehype-pretty-code-fragment] .line--highlighted {
+  @apply bg-zinc-700/50;
+}
+
+[data-rehype-pretty-code-fragment] .line-highlighted span {
+  @apply relative;
+}
+
+[data-rehype-pretty-code-fragment] .word--highlighted {
+  @apply rounded-md border-zinc-700/70 bg-zinc-700/50 p-1;
+}
+
+.dark [data-rehype-pretty-code-fragment] .word--highlighted {
+  @apply bg-zinc-900;
+}
+
+[data-rehype-pretty-code-title] {
+  @apply mt-2 px-4 pt-6 text-sm font-medium;
+}
+
+[data-rehype-pretty-code-title] + pre {
+  @apply mt-2;
+}
+
+.mdx > .steps:first-child > h3:first-child {
+  @apply mt-0;
 }

@@ -1,4 +1,9 @@
 import { defineDocumentType, defineNestedType, makeSource } from 'contentlayer/source-files';
+import { type MDXOptions } from 'contentlayer/core';
+import remarkGfm from 'remark-gfm';
+import rehypePrettyCode from 'rehype-pretty-code';
+import rehypeSlug from 'rehype-slug';
+import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 
 const Author = defineNestedType(() => ({
   name: 'Author',
@@ -29,4 +34,32 @@ export const Post = defineDocumentType(() => ({
   },
 }));
 
-export default makeSource({ contentDirPath: 'changelog', documentTypes: [Post] });
+const mdx = {
+  remarkPlugins: [remarkGfm],
+  rehypePlugins: [
+    rehypeSlug,
+    [
+      rehypePrettyCode,
+      {
+        theme: {
+          dark: 'github-dark',
+          light: 'github-light',
+        },
+        onVisitLine(node: any) {
+          if (node.children.length === 0) {
+            node.children = [{ type: 'text', value: ' ' }];
+          }
+        },
+        onVisitHighlightedLine(node: any) {
+          node.properties.className.push('line--highlighted');
+        },
+        onVisitHighlightedWord(node: any) {
+          node.properties.className = ['word--highlighted'];
+        },
+      },
+    ],
+    [rehypeAutolinkHeadings, { properties: { className: ['anchor'] } }],
+  ],
+} satisfies MDXOptions;
+
+export default makeSource({ contentDirPath: 'changelog', documentTypes: [Post], mdx });

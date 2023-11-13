@@ -4,7 +4,6 @@ import { H1 } from '@/components/ui/typography';
 import { getAllPosts, getPostBySlug } from '@/lib/posts';
 import { cn } from '@/lib/utils';
 import { Metadata } from 'next';
-import { useMDXComponent } from 'next-contentlayer/hooks';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Time } from '@/components/time';
@@ -12,6 +11,7 @@ import { notFound } from 'next/navigation';
 import { ScrollArea, ScrollBar } from '@/components/ui/scroll-area';
 import { Post } from '@/.contentlayer/generated';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import { Mdx } from '@/components/mdx';
 
 type PageProps = {
   params: { slug: string };
@@ -31,7 +31,6 @@ export const generateMetadata = ({ params }: PageProps): Metadata => {
 export default function PostPage({ params }: PageProps) {
   const post = getPostBySlug(params.slug);
   if (!post) notFound();
-  const MDXContent = useMDXComponent(post.body.code);
 
   return (
     <div className="mx-auto max-w-[800px] md:w-2/3">
@@ -58,7 +57,7 @@ export default function PostPage({ params }: PageProps) {
           />
         ) : null}
         <Authors authors={post.authors} />
-        <MDXContent />
+        <Mdx code={post.body.code} />
       </article>
     </div>
   );
