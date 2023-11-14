@@ -12,7 +12,7 @@ import { ScrollArea, ScrollBar } from '@/components/ui/scroll-area';
 import { Post } from '@/.contentlayer/generated';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Mdx } from '@/components/mdx';
-import { buildMetaForPost } from '@/app/metadata';
+import { buildMeta, buildMetaForPost } from '@/app/metadata';
 import { format, parseISO } from 'date-fns';
 
 type PageProps = {
@@ -25,7 +25,8 @@ export async function generateStaticParams() {
 
 export const generateMetadata = async ({ params }: PageProps): Promise<Metadata> => {
   const post = getPostBySlug(params.slug);
-  if (!post) return { title: 'Not found' };
+  if (!post)
+    return await buildMeta({ title: 'Not found', description: 'Looks like you are lost!' });
 
   const formattedDate = format(parseISO(post.date), 'LLLL d, yyyy');
 

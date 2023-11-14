@@ -45,12 +45,12 @@ export const baseMetadata: Metadata = {
   },
 };
 
-const buildMeta = async ({
+export const buildMeta = async ({
   ogImageUrl,
   description,
   title,
 }: {
-  ogImageUrl: string;
+  ogImageUrl?: string;
   description?: string;
   title?: string;
 }): Promise<Metadata> => {
