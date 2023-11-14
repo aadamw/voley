@@ -1,5 +1,6 @@
-import { Facebook, Linkedin, MoveLeftIcon } from 'lucide-react';
+import { Facebook, Linkedin, MoveLeftIcon, Plus } from 'lucide-react';
 
+export const PlusIcon = Plus;
 export const FacebookIcon = Facebook;
 export const LinkedInIcon = Linkedin;
 export const GoBackIcon = MoveLeftIcon;
