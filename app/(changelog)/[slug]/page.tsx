@@ -12,6 +12,8 @@ import { ScrollArea, ScrollBar } from '@/components/ui/scroll-area';
 import { Post } from '@/.contentlayer/generated';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Mdx } from '@/components/mdx';
+import { buildMeta, buildMetaForPost } from '@/app/metadata';
+import { format, parseISO } from 'date-fns';
 
 type PageProps = {
   params: { slug: string };
@@ -21,11 +23,19 @@ export async function generateStaticParams() {
   return getAllPosts().map((post) => ({ slug: post._raw.flattenedPath }));
 }
 
-export const generateMetadata = ({ params }: PageProps): Metadata => {
+export const generateMetadata = async ({ params }: PageProps): Promise<Metadata> => {
   const post = getPostBySlug(params.slug);
-  if (!post) return { title: 'Not found' };
+  if (!post)
+    return await buildMeta({ title: 'Not found', description: 'Looks like you are lost!' });
 
-  return { title: post.title };
+  const formattedDate = format(parseISO(post.date), 'LLLL d, yyyy');
+
+  return await buildMetaForPost({
+    title: post.title,
+    description: `${post.title} - ${formattedDate}`,
+    coverImgUrl: post.coverImgUrl,
+    date: formattedDate,
+  });
 };
 
 export default function PostPage({ params }: PageProps) {
