@@ -7,6 +7,8 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Time } from '@/components/time';
 import { Mdx } from '@/components/mdx';
+import { Step, Stepper } from '@/components/stepper';
+import { PlusIcon } from 'lucide-react';
 
 export default function Home() {
   const posts = getAllPosts();
@@ -15,12 +17,19 @@ export default function Home() {
   return (
     <>
       <div className="mx-auto max-w-[800px] md:w-2/3">
-        <H1>Changelog</H1>
-        <div className="mt-10 grid gap-4 ">
-          {sortedPosts.map((post, idx) => (
-            <Post key={idx} post={post} />
-          ))}
-        </div>
+        <H1 className="mb-10">Changelog</H1>
+        <Stepper>
+          <div className="grid gap-8 md:gap-16">
+            {sortedPosts.map((post, idx) => (
+              <div key={idx}>
+                <Step>
+                  <PlusIcon className="h-4 w-4 transition-all hover:rotate-45" />
+                </Step>
+                <Post post={post} />
+              </div>
+            ))}
+          </div>
+        </Stepper>
       </div>
     </>
   );
@@ -28,7 +37,7 @@ export default function Home() {
 
 function Post({ post }: { post: Post }) {
   return (
-    <article className="grid gap-4 border-b py-4">
+    <article className="grid gap-4 border-b md:pl-8">
       <div className="flex items-center gap-4">
         <div className="flex -space-x-2">
           {post.authors.map((author, idx) => (
