@@ -1,7 +1,7 @@
 export const siteConfig = {
   title: 'Voley',
   description: 'Changelog template for your projects',
-  url: `https://${process.env.VERCEL_URL}` ?? 'http://localhost:3000',
+  url: process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : 'http://localhost:3000',
 } satisfies SiteConfig;
 
 export const footer = {
