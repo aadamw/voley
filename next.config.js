@@ -10,16 +10,6 @@ const nextConfig = {
     ignoreDuringBuilds: true,
   },
   swcMinify: true,
-  //TODO: REMOVE THIS
-  images: {
-    remotePatterns: [
-      {
-        protocol: 'https',
-        hostname: 'images.unsplash.com',
-        port: '',
-      },
-    ],
-  },
 };
 
 module.exports = withContentlayer(nextConfig);

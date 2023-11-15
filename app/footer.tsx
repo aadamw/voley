@@ -41,7 +41,7 @@ function NavigationLinks() {
           <strong className="mb-2 block">{link.title}</strong>
           <ul>
             {link.items.map((item) => (
-              <li key={item.label} className="text-foreground/60">
+              <li key={item.label} className="text-foreground/60 hover:text-foreground">
                 <a href={item.href}>{item.label}</a>
               </li>
             ))}
