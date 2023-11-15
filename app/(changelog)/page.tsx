@@ -1,7 +1,6 @@
-import { Post } from '@/.contentlayer/generated';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { H1, H2 } from '@/components/ui/typography';
-import { getAllPosts } from '@/lib/posts';
+import { getAllPosts, type Post } from '@/lib/posts';
 import { compareDesc } from 'date-fns';
 import Image from 'next/image';
 import Link from 'next/link';
