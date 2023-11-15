@@ -2,6 +2,7 @@ export const siteConfig = {
   title: 'Voley',
   description: 'Changelog template for your projects',
   url: process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : 'http://localhost:3000',
+  twitterHandle: 'voley',
 } satisfies SiteConfig;
 
 export const footer = {
@@ -47,6 +48,7 @@ type SiteConfig = {
   title: string;
   description: string;
   url: string;
+  twitterHandle?: string;
 };
 
 type NavigationLink = {

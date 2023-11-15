@@ -1,7 +1,7 @@
 import { GoBackIcon } from '@/components/icons';
 import { buttonVariants } from '@/components/ui/button';
 import { H1 } from '@/components/ui/typography';
-import { getAllPosts, getPostBySlug } from '@/lib/posts';
+import { type Post, getAllPosts, getPostBySlug } from '@/lib/posts';
 import { cn } from '@/lib/utils';
 import { Metadata } from 'next';
 import Link from 'next/link';
@@ -9,11 +9,11 @@ import Image from 'next/image';
 import { Time } from '@/components/time';
 import { notFound } from 'next/navigation';
 import { ScrollArea, ScrollBar } from '@/components/ui/scroll-area';
-import { Post } from '@/.contentlayer/generated';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Mdx } from '@/components/mdx';
 import { buildMeta, buildMetaForPost } from '@/app/metadata';
 import { format, parseISO } from 'date-fns';
+import { TwitterShareButton } from './share-button';
 
 type PageProps = {
   params: { slug: string };
@@ -69,6 +69,9 @@ export default function PostPage({ params }: PageProps) {
         <Authors authors={post.authors} />
         <Mdx code={post.body.code} />
       </article>
+      <section className="mt-10 flex flex-wrap gap-4">
+        <TwitterShareButton url={post.url} />
+      </section>
     </div>
   );
 }
