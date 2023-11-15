@@ -9,10 +9,24 @@ import { Time } from '@/components/time';
 import { Mdx } from '@/components/mdx';
 import { Step, Stepper } from '@/components/stepper';
 import { PlusIcon } from 'lucide-react';
+import { cn } from '@/lib/utils';
+import { buttonVariants } from '@/components/ui/button';
 
-export default function Home() {
+const POSTS_TAKE = 5;
+
+export default function Home({
+  searchParams: { page = '1' },
+}: {
+  searchParams: { page?: string };
+}) {
   const posts = getAllPosts();
+  const pageAsNumber = parseInt(page, 10);
+
   const sortedPosts = posts.sort((a, b) => compareDesc(new Date(a.date), new Date(b.date)));
+  const loadedPosts = sortedPosts.slice(0, pageAsNumber * POSTS_TAKE);
+
+  const isLoadMoreBtnVisible = posts.length > loadedPosts.length;
+  const nextPage = pageAsNumber + 1;
 
   return (
     <>
@@ -20,7 +34,7 @@ export default function Home() {
         <H1 className="mb-10">Changelog</H1>
         <Stepper>
           <div className="grid gap-8 md:gap-16">
-            {sortedPosts.map((post, idx) => (
+            {loadedPosts.map((post, idx) => (
               <div key={idx}>
                 <Step>
                   <PlusIcon className="h-4 w-4 transition-all hover:rotate-45" />
@@ -30,6 +44,17 @@ export default function Home() {
             ))}
           </div>
         </Stepper>
+        {isLoadMoreBtnVisible ? (
+          <div className="mt-10 flex w-full justify-center">
+            <Link
+              scroll={false}
+              href={`/?page=${nextPage}`}
+              className={cn(buttonVariants({ variant: 'outline' }), 'w-[300px]')}
+            >
+              Load More
+            </Link>
+          </div>
+        ) : null}
       </div>
     </>
   );
