@@ -16,7 +16,7 @@ const socialMediaLinks = footer?.socialMediaLinks;
 
 export function Footer() {
   return (
-    <footer className="footerGrid grid gap-4 border-t p-6  md:px-6 md:py-8">
+    <footer className="footerGrid grid gap-4 border-t p-6 md:px-6 md:py-8">
       <header className="footerLeft">
         {siteConfig.title} © {new Date().getFullYear()}
       </header>
