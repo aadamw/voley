@@ -33,6 +33,7 @@ export const footer = {
         { href: '/about', label: 'About' },
         { href: '/contact', label: 'Contact' },
         { href: '/careers', label: 'Careers' },
+        { href: '/unsubscribe', label: 'Unsubscribe' }, //This one is used by newsletter
       ],
     },
   ],

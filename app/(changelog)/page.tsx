@@ -10,6 +10,8 @@ import { Step, Stepper } from '@/components/stepper';
 import { PlusIcon } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { buttonVariants } from '@/components/ui/button';
+import { getIsSubscribedToNewsletter } from './newsletter.cookie';
+import { NewsletterSubscription } from './newsletter-subscription';
 
 const POSTS_TAKE = 5;
 
@@ -18,6 +20,7 @@ export default function Home({
 }: {
   searchParams: { page?: string };
 }) {
+  const isSubscribedToNewsletter = getIsSubscribedToNewsletter();
   const posts = getAllPosts();
   const pageAsNumber = parseInt(page, 10);
 
@@ -54,6 +57,9 @@ export default function Home({
             </Link>
           </div>
         ) : null}
+        <div className="mt-10">
+          <NewsletterSubscription isSubscribedToNewsletter={isSubscribedToNewsletter} />
+        </div>
       </div>
     </>
   );

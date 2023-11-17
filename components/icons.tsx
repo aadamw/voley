@@ -1,9 +1,10 @@
-import { Facebook, Linkedin, MoveLeftIcon, Plus } from 'lucide-react';
+import { Facebook, Linkedin, Loader2, MoveLeftIcon, Plus } from 'lucide-react';
 
 export const PlusIcon = Plus;
 export const FacebookIcon = Facebook;
 export const LinkedInIcon = Linkedin;
 export const GoBackIcon = MoveLeftIcon;
+export const LoaderIcon = Loader2;
 export function GithubIcon(props: React.SVGProps<SVGSVGElement>) {
   return (
     <svg aria-label="github" height="19" viewBox="0 0 14 14" width="19" {...props}>
