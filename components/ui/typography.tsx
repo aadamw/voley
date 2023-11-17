@@ -17,3 +17,12 @@ export function H2({ className, ...props }: React.HTMLAttributes<HTMLHeadingElem
     />
   );
 }
+
+export function H3({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) {
+  return (
+    <h3
+      {...props}
+      className={cn('font-sans text-lg font-semibold leading-tight md:text-xl', className)}
+    />
+  );
+}
