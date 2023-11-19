@@ -4,7 +4,6 @@ import { redirect } from 'next/navigation';
 import { eq } from 'drizzle-orm';
 import { db } from '@/db';
 import { subscribers } from '@/db/schemas';
-import { updateNewsletterCookie } from './newsletter.cookie';
 
 export type NewsletterActionState = {
   message?: string;
@@ -33,7 +32,6 @@ export async function subscribeAction(
       .values({ email: email.toString(), status: 'subscribed' })
       .onDuplicateKeyUpdate({ set: { status: 'subscribed' } });
 
-    updateNewsletterCookie('true');
     return { message: messages.success, status: 'success' };
   } catch (e) {
     return { message: messages.serviceError, status: 'error' };
@@ -66,7 +64,6 @@ export async function unsubscribeAction(
       .set({ status: 'unsubscribed' })
       .where(eq(subscribers.email, email.toString()));
 
-    updateNewsletterCookie('false');
     redirect('/');
   } catch (e) {
     return { message: messages.serviceError, status: 'error' };
