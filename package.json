@@ -8,6 +8,8 @@
     "email:dev": "email dev",
     "start": "next start",
     "lint": "next lint",
+    "format:check": "prettier --check .",
+    "format:fix": "prettier --write .",
     "db:push": "drizzle-kit push:mysql",
     "db:studio": "drizzle-kit studio",
     "db:generate": "drizzle-kit generate:mysql"
