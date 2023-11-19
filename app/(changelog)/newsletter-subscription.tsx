@@ -6,48 +6,22 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { H2, H3 } from '@/components/ui/typography';
 import { subscribeAction, unsubscribeAction } from './newsletter.action';
-import { LoaderIcon } from '@/components/icons';
-import Link from 'next/link';
+import { CheckIcon, LoaderIcon } from '@/components/icons';
 
-function SubmitButton({ children }: { children?: React.ReactNode }) {
+function SubmitButton({ children, className }: { children?: React.ReactNode; className?: string }) {
   const status = useFormStatus();
   return (
-    <Button type="submit" aria-disabled={status.pending}>
+    <Button type="submit" aria-disabled={status.pending} className={className}>
       {status.pending ? <LoaderIcon className="h-4 w-4 animate-spin" /> : children}
     </Button>
   );
 }
 
-export function NewsletterSubscription({
-  isSubscribedToNewsletter,
-}: {
-  isSubscribedToNewsletter: boolean;
-}) {
+export function NewsletterSubscribe() {
   const errorId = useId();
   const [state, formAction] = useFormState(subscribeAction, {});
 
-  if (state.status === 'success') {
-    return (
-      <>
-        <H3 className="text-green-600">{state.message}</H3>
-      </>
-    );
-  }
-
-  if (isSubscribedToNewsletter) {
-    return (
-      <span className="text-sm">
-        Looks like you&apos;re already subscribed to our newsletter. You can unsubscribe at any time
-        by clicking the{' '}
-        <Link
-          className="text-foreground/60 hover:text-foreground hover:underline"
-          href="/unsubscribe"
-        >
-          unsubscribe
-        </Link>
-      </span>
-    );
-  }
+  const success = state.status === 'success';
 
   return (
     <div className="grid w-full gap-4">
@@ -61,7 +35,9 @@ export function NewsletterSubscription({
           aria-label="Subscribe to our changelog newsletter"
           aria-describedby={state.status === 'error' ? errorId : undefined}
         />
-        <SubmitButton>Subscribe</SubmitButton>
+        <SubmitButton className={success ? 'bg-green-400' : ''}>
+          {success ? <CheckIcon /> : 'Subscribe'}
+        </SubmitButton>
         {state.status === 'error' ? (
           <span aria-live="polite" id={errorId} className="text-sm text-destructive">
             {state.message}
@@ -72,7 +48,7 @@ export function NewsletterSubscription({
   );
 }
 
-export function NewsletterUnsubscription() {
+export function NewsletterUnsubscribe() {
   const errorId = useId();
   const [state, formAction] = useFormState(unsubscribeAction, {});
 
@@ -85,7 +61,7 @@ export function NewsletterUnsubscription() {
           name="email"
           type="email"
           placeholder="Email"
-          aria-label="Subscribe to our changelog newsletter"
+          aria-label="Unsubscribe from our changelog newsletter"
           aria-describedby={state.status === 'error' ? errorId : undefined}
         />
         <SubmitButton>Confirm</SubmitButton>
