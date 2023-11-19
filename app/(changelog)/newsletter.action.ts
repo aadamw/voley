@@ -52,8 +52,6 @@ export async function unsubscribeAction(
     where: eq(subscribers.email, email.toString()),
   });
 
-  console.log({ isSubscribed });
-
   if (!isSubscribed) {
     return { message: messages.serviceError, status: 'error' };
   }
