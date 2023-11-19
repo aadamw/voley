@@ -64,10 +64,15 @@ export function NewsletterUnsubscribe() {
           aria-label="Unsubscribe from our changelog newsletter"
           aria-describedby={state.status === 'error' ? errorId : undefined}
         />
-        <SubmitButton>Confirm</SubmitButton>
+        <SubmitButton> {state.status === 'success' ? <CheckIcon /> : 'Confirm'}</SubmitButton>
       </form>
       {state.status === 'error' ? (
         <span aria-live="polite" className="text-sm text-destructive">
+          {state.message}
+        </span>
+      ) : null}
+      {state.status === 'success' ? (
+        <span aria-live="polite" className="text-sm">
           {state.message}
         </span>
       ) : null}
