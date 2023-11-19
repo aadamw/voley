@@ -14,7 +14,7 @@ const messages = {
   serviceError: 'Something went wrong',
   success: 'Thanks for subscribing!',
   validationError: 'Email is required',
-  confirmationSent: "We've sent you confirmation email",
+  confirmationSent: "We've sent you confirmation email. Please check your inbox",
 };
 
 export async function subscribeAction(
