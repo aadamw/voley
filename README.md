@@ -4,7 +4,9 @@
   </a>
 </p>
 
-![typehero header](./public/og.png)
+<a href="https://voley.vercel.app">
+    <img src="./public/og.png" alt="Voley" />
+</a>
 
 ### 👋 About
 
@@ -68,11 +70,19 @@ You can configure Voley by editing the `config/site-config.ts` file You can chan
 
 - `navigationLinks.socialMediaLinks` - The social media links that will be displayed in the footer (facebook, twitter, github, linkedin) are supported out-of-the-box. You can add more by adding specific icons.
 
+#### Favicons, OG images, and other images:
+
+- `favicon.ico` - update the `app/favicon.ico` file
+- `og.pnh` - update the `public/og.png` file
+- `logo.png` - update the `public/logo.png` file (used in the email templates)
+
 ### Publishing posts
 
 All posts should be written in markdown and placed in the `./changelog` folder in the root directory. The filename should be the slug of the post in the format `my-post.mdx`. We use [contentLayer](https://www.contentlayer.dev/) to parse the markdown files and generate the data for the posts with typesafety in mind. You can check out the [contentLayer documentation](https://www.contentlayer.dev/docs/getting-started) for more details.
 
 You can check out the [example post](https://github.com/aadamw/voley/blob/master/changelog/introducing-voley.mdx) to see how to format your posts or check [contentLayer.config.ts](https://github.com/aadamw/voley/blob/master/contentlayer.config.ts) file in order to see the types of the data that is generated for each post.
+
+All images should be placed in the `./public` folder in the root directory. You can reference them in the markdown files by using the relative path to the image.
 
 #### Available MDX components
 
