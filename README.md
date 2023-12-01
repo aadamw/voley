@@ -73,7 +73,7 @@ You can configure Voley by editing the `config/site-config.ts` file You can chan
 #### Favicons, OG images, and other images:
 
 - `favicon.ico` - update the `app/favicon.ico` file
-- `og.pnh` - update the `public/og.png` file
+- `og.png` - update the `public/og.png` file
 - `logo.png` - update the `public/logo.png` file (used in the email templates)
 
 ### Publishing posts
