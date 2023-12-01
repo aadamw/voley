@@ -1,4 +1,6 @@
-import { GeistSans, GeistMono } from 'geist/font';
+import { GeistSans } from 'geist/font/sans';
+import { GeistMono } from 'geist/font/mono';
+import { Analytics } from '@vercel/analytics/react';
 import '@/styles/globals.css';
 import { cn } from '@/lib/utils';
 import { Providers } from '../components/providers';
@@ -16,6 +18,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         )}
       >
         <Providers>{children}</Providers>
+        <Analytics />
       </body>
     </html>
   );
