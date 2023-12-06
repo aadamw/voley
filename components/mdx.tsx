@@ -3,6 +3,7 @@ import Image from 'next/image';
 import { useMDXComponent } from 'next-contentlayer/hooks';
 import { cn } from '@/lib/utils';
 import { TweetComponent } from './tweet';
+import { NewsletterSubscribe } from '@/app/(changelog)/newsletter-subscription';
 
 // This type is not exposed by next-contentlayer, so we have to re-create it here
 type MDXComponents = Parameters<ReturnType<typeof useMDXComponent>>[0]['components'];
@@ -68,6 +69,7 @@ const components = {
   code: Code,
   pre: Pre,
   StaticTweet: TweetComponent,
+  NewsletterSubscribe,
 } as MDXComponents;
 
 export function Mdx({ code }: { code: string }) {

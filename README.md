@@ -10,7 +10,7 @@
 
 ### 👋 About
 
-Voley is open-source, free, and easy to setup changelog site build with [Next.js](https://nextjs.org/), [TailwindCSS](https://tailwindcss.com/), [Drizzle](https://drizzle.team/), [Resend](https://resend.com), [contentLayer](https://www.contentlayer.dev/), [Planetscale](https://planetscale.com/), and [shadcn/ui](https://ui.shadcn.com/) It contains everything you need to get started with changelog site for your project.
+Voley is open-source, free, and easy to setup changelog site build with [Next.js](https://nextjs.org/), [tailwindcss](https://tailwindcss.com/), [Drizzle](https://drizzle.team/), [Resend](https://resend.com), [contentLayer](https://www.contentlayer.dev/), [Planetscale](https://planetscale.com/), and [shadcn/ui](https://ui.shadcn.com/) It contains everything you need to get started with changelog site for your project.
 
 ### 📦 Features
 
@@ -19,9 +19,10 @@ Voley is open-source, free, and easy to setup changelog site build with [Next.js
 - 🎨 Dark/Light mode
 - 📈 SEO friendly
 - 📊 Analytics
-- 📨 Automatic newsletter sending when new post is published
+- 📬 Newsletter subscribe/unsubscribe
+- 📨 Newsletter sending when new post is published
 - 📨 Pre-built email templates
-- 📬 Newsletter signup
+- 🎨 Easy theme and content configuration
 
 ### 🚀 Getting Started
 
