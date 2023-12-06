@@ -5,7 +5,7 @@ import { compareDesc } from 'date-fns';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Time } from '@/components/time';
-import { Mdx } from '@/components/mdx';
+
 import { Step, Stepper } from '@/components/stepper';
 import { PlusIcon } from 'lucide-react';
 import { cn } from '@/lib/utils';
@@ -93,9 +93,7 @@ function Post({ post }: { post: Post }) {
       <H2>
         <Link href={post.url}>{post.title}</Link>
       </H2>
-      <section>
-        <Mdx code={post.description.code} />
-      </section>
+      <p className="mb-8">{post.description}</p>
     </article>
   );
 }
