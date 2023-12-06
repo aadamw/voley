@@ -82,6 +82,7 @@ function Post({ post }: { post: Post }) {
       {post.coverImgUrl ? (
         <Link href={post.url}>
           <Image
+            priority
             src={post.coverImgUrl}
             alt={post.title}
             width={800}

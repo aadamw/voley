@@ -80,6 +80,7 @@ function SocialMediaLinks() {
       {socialMediaLinks.map((link, idx) => (
         <li key={idx}>
           <a
+            aria-label={`${link.icon} social media profile`}
             target="__blank"
             rel="noopener noreferrer"
             href={link.href}

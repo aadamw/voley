@@ -31,15 +31,15 @@ export function ThemeSwitcher() {
       aria-label="Switch theme"
       className="flex gap-2"
     >
-      <RadioGroup.Item value="dark" className={className}>
+      <RadioGroup.Item value="dark" className={className} aria-label="Toggle night theme">
         <ThemeNightIcon className="h-4 w-4 text-foreground" />
         <RadioGroup.Indicator />
       </RadioGroup.Item>
-      <RadioGroup.Item value="light" className={className}>
+      <RadioGroup.Item value="light" className={className} aria-label="Toggle light theme">
         <ThemeLightIcon className="h-4 w-4 text-foreground" />
         <RadioGroup.Indicator />
       </RadioGroup.Item>
-      <RadioGroup.Item value="system" className={className}>
+      <RadioGroup.Item value="system" className={className} aria-label="Toggle system theme">
         <ThemeSystemIcon className="h-4 w-4 text-foreground" />
         <RadioGroup.Indicator />
       </RadioGroup.Item>
